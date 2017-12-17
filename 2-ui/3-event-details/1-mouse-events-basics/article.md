@@ -1,53 +1,86 @@
 # Mouse events basics
 
 In this chapter we'll get into more details about mouse events and their properties.
+这一章，我们将详细了解鼠标事件的以及他的属性。
 
 [cut]
 
-## Mouse event types
+## Mouse event types 鼠标事件的类型
 
 We can split mouse events into two categories: "simple" and "complex"
 
-### Simple events
+我们可以讲鼠标事件分成两大类：简单鼠标事件和复杂鼠标事件
+
+
+### Simple events 简单鼠标事件
 
 The most used simple events are:
 
-`mousedown/mouseup`
+最常用的简单鼠标事件有：
+
+`mousedown/mouseup` 
 : Mouse button is clicked/released over an element.
+鼠标在一个dom元素上点击或者释放。
 
 `mouseover/mouseout`
 : Mouse pointer comes over/out from an element.
 
+鼠标指针在一个元素上经过或者移出
+
 `mousemove`
 : Every mouse move over an element triggers that event.
 
+鼠标经过一个元素将触发mousemove事件。
+
 ...There are several other event types too, we'll cover them later.
 
-### Complex events
+当然还有其他一些类型的事件，我们将在稍后的内容提到。
+
+### Complex events 复杂事件
 
 `click`
 : Triggers after `mousedown` and then `mouseup` over the same element.
 
+在同一个元素中经过`mousedown`和`mouseup` 之后会触发`click`事件
+
 `contextmenu`
 : Triggers after `mousedown` if the right mouse button was used.
+当鼠标右键点击之后会触发`contextmenu`事件。
 
 `dblclick`
 : Triggers after a double click over an element.
 
+在一个元素上双击会触发`dblclick`事件。
+
 Complex events are made of simple ones, so in theory we could live without them. But they exist, and that's good, because they are convenient.
+
+复杂事件是由简单事件组成，所以理论上我们是可以不需要他们的，但是他们已经存在，而且比较好，因为他们比较方便。
+
 
 For touchscreen and touchpad devices mouse events also happen, they are emulated.
 
-### Events order
+对于触屏手机和触屏电脑设备鼠标事件也是用的，但是是模拟的。
+
+
+### Events order 事件书序
 
 An action may trigger multiple events.
 
+一个事件可能触发多个事件。
+
 For instance, a click first triggers `mousedown`, when the button is pressed, then `mouseup` and `click` when it's released.
 
+例如，当按钮被点击的时候，事件首先触发`mousedown`，然后当鼠标松开的时候 `mouseup`和`click`被触发。
+
+
 In cases when a single action initiates multiple events, their order is fixed. That is, the handlers are called in the order `mousedown` -> `mouseup` -> `click`. Events are handled in the same sequence:  `onmouseup` finishes before `onclick` runs.
+当一个行为触发多个事件，他们的顺序也是固定的。也就是说，事件处理器的调用是：`mousedown` -> `mouseup` -> `click`。事件处理也是同样的顺序：`onmouseup` 处理完成之后，`onclick`才能开始。
+
 
 ```online
 Click the button below and you'll see the events. Try double-click too.
+
+点击下面的按钮，你将看到一些事件。也可以尝试双击。
 
 On the teststand below all mouse events are logged, and if there are more than 1 second delay between them, then they are separated by a horizontal ruler.
 
@@ -59,6 +92,8 @@ Also we can see the `which` property that allows to detect the mouse button.
 ## Getting the button: which
 
 Click-related events always have the `which` property that allows to get the button.
+
+和点击相关的事件有一个which属性，通过他可以获取button。
 
 It is not used for `click` and `contextmenu` events, because the former happens only on left-click, and the latter -- only on right-click.
 

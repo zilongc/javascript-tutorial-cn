@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<input
+        onmousedown="return logMouse(event)"
+        onmouseup="return logMouse(event)"
+        onclick="return logMouse(event)"
+        oncontextmenu="return logMouse(event)"
+        ondblclick="return logMouse(event)"
+        value="Click me with the right or the left mouse button"
+        type="button">
+
+<input onclick="logClear('test')"
+       value="Clear" type="button">
+
+<form id="testform" name="testform">
+    <textarea style="font-size:12px;height:150px;width:360px;">
+    </textarea>
+</form>
+
+
+</body>
+</html>
